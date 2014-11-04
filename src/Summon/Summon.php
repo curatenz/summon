@@ -57,10 +57,10 @@ class Summon {
         )
     );
 
-    public function __construct($url){
-        $this->url = $url;
-        $this->client = new Client($this->url);
+    public function __construct(Client $client){
+        $this->client = $client;
         $this->client->setUserAgent(self::USER_AGENT);
+        $this->url = $client->getBaseUrl();
     }
 
     public static function create($url){
